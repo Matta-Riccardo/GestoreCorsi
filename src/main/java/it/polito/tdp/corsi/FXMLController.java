@@ -114,7 +114,11 @@ public class FXMLController {
         
         //TODO Controllo che il corso esista!
         
-        for(Divisione d: this.model.getDivisioneStudenti(codins)) {
+        List<Divisione> risultato = this.model.getDivisioneStudenti(codins);
+        Collections.sort(risultato);
+        
+        
+        for(Divisione d: risultato) {
         	txtRisultato.appendText(d.getCDS() + " "+ d.getNumeroStudenti() +"\n");
         }
     }
@@ -129,9 +133,7 @@ public class FXMLController {
         }
         
         //TODO Controllo che il corso esista!
-        List<Divisione> risultato = this.model.getDivisioneStudenti(codins);
-        Collections.sort(risultato);
-        
+
         for(Studente s: this.model.getStudentiByCorso(codins)) {
         	txtRisultato.appendText(s +"\n");
         }
